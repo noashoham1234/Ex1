@@ -1,4 +1,3 @@
-package assignments.ex1;
 import java.util.Scanner;
 
 /**
@@ -9,6 +8,11 @@ import java.util.Scanner;
 public class Ex1Main {
 
     public static void main(String[] args) {
+        System.out.println(Ex1.number2Int("10003011b2"));
+        System.out.println(Ex1.int2Number(15,16));
+        System.out.println(Ex1.int2Number(100002,16));
+        System.out.println(Ex1.int2Number(567,2));
+
         Scanner sc = new Scanner(System.in);
         String num1 = "", num2="", quit = "quit";
         while (!num1.equals(quit) && !num2.equals(quit)) {
