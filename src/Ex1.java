@@ -1,13 +1,12 @@
-import java.util.Arrays;
 
 /**
  * This class represents a simple solution for Ex1.
  * As defined here: https://docs.google.com/document/d/1AJ9wtnL1qdEs4DAKqBlO1bXCM6r6GJ_J/r/edit/edit
  * In this assignment, we will design a number formatting converter and calculator.
  * In general, we will use Strings as numbers over basis of binary till Hexa.
- * [2-16], 10-16 are represented by A,B,..G.
+ * [2-16], 10-16 are represented by A,B,...G.
  * The general representation of the numbers is as a String with the following format:
- * <number><b><base> e.g., “135bA” (i.e., “135”, as 10 is the default base), “100111b2”, “12345b6”,”012b5”, “123bG”, “EFbG”.
+ * <number><b><base> e.g., “135bA” (i.e., “135”, as 10 is the default base), “100111b2”, “12345b6”, “012b5” , “123bG”, “EFbG”.
  * The following are NOT in the format (not a valid number):
  * “b2”, “0b1”, “123b”, “1234b11”, “3b3”, “-3b5”, “3 b4”, “GbG”, "", null,
  * You should implement the following static functions:
@@ -15,24 +14,16 @@ import java.util.Arrays;
 public class Ex1 {
 
     public static int convertBaseStringToNum(String b){
-        int ans = 0;
-        if(b.equals("A")){
-            ans = 10;
-        }else if(b.equals("B")){
-            ans = 11;
-        }else if (b.equals("C")){
-            ans = 12;
-        }else if (b.equals("D")){
-            ans = 13;
-        }else if (b.equals("E")){
-            ans = 14;
-        }else if (b.equals("F")){
-            ans = 15;
-        }else if (b.equals("G")){
-            ans = 16;
-        }else{
-            ans = Integer.parseInt(b);
-        }
+        int ans = switch (b) {
+            case "A" -> 10;
+            case "B" -> 11;
+            case "C" -> 12;
+            case "D" -> 13;
+            case "E" -> 14;
+            case "F" -> 15;
+            case "G" -> 16;
+            default -> Integer.parseInt(b);
+        };
         return ans;
     }
 
@@ -42,6 +33,7 @@ public class Ex1 {
         for(int i = 0;  i < basisim.length; i++){
             if(base == basisim[i]){
                 ans = true;
+                break;
             }
         }
         return ans;
@@ -102,7 +94,7 @@ public class Ex1 {
     public static boolean isNumber(String a) {
         boolean ans = true;
 
-        if(a.length() <= 0) {
+        if(a.isEmpty()) {
             ans = false;
         }else {
             String[] arr = a.split("b");
@@ -154,9 +146,10 @@ public class Ex1 {
      */
     public static String int2Number(int num, int base) {
         String ans = "";
-        int testNum = num;
-        String newNum = "";
-        String numbers = "0123456789ABCDEF";
+
+//        int testNum = num;
+//        String newNum = "";
+//        String numbers = "0123456789ABCDEF";
 
 //        boolean isCorrectBase = checkIfValidBase(base);
 //        if(num > 0 && isCorrectBase ) {
