@@ -80,7 +80,7 @@ public class Ex1 {
      * If the given number is not in a valid format returns -1.
      *
      * @param num a String representing a number in basis [2,16]
-     * @return
+     * @return number in int form
      */
     public static int number2Int(String num) {
         int ans = -1;
@@ -177,7 +177,7 @@ public class Ex1 {
      */
     public static String int2Number(int num, int base) {
         String ans;
-        String newNum = "";
+        StringBuilder newNum = new StringBuilder();
         int testNum = num;
         int count = 0;
         if (num < 0 || !checkIfValidBase(base)) {
@@ -193,16 +193,16 @@ public class Ex1 {
                     double pow = Math.pow(base, count - (i + 1));
                     int numTimesCount = (int) (testNum / pow);
                     testNum -= (int) (numTimesCount * pow);
-                    newNum += convertBaseIntToString(numTimesCount);
+                    newNum.append(convertBaseIntToString(numTimesCount));
                 }
             }else{
-                newNum += 0;
+                newNum.append(0);
             }
             if (base != 10) {
                 String newBase = convertBaseIntToString(base);
-                newNum += 'b' + newBase;
+                newNum.append('b').append(newBase);
             }
-            ans = newNum;
+            ans = newNum.toString();
         }
         return ans;
     }

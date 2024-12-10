@@ -88,8 +88,7 @@ public class Ex1Test {
         String[] arr5 = {};
         assertEquals(-1, Ex1.maxIndex(arr5));
 
-        String[] arr6 = null;
-        assertEquals(-1, Ex1.maxIndex(arr6));
+        assertEquals(-1, Ex1.maxIndex(null));
     }
 
     @Test
