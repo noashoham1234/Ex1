@@ -64,7 +64,7 @@ public class Ex1 {
         int[] basisim = {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16};
         boolean ans = false;
 
-        if(base > 0) {
+        if (base > 0) {
             for (int i = 0; i < basisim.length; i++) {
                 if (base == basisim[i]) {
                     ans = true;
@@ -85,6 +85,9 @@ public class Ex1 {
     public static int number2Int(String num) {
         int ans = -1;
         if (isNumber(num)) {
+            if (!num.contains("b")) {
+                num += "bA";
+            }
             String[] arr = num.split("b");
 
             String valueNum = arr[0];
@@ -96,7 +99,8 @@ public class Ex1 {
             int sum = 0;
 
             for (int i = 0; i < res.length(); i++) {
-                int numPow = Integer.parseInt(String.valueOf(res.charAt(i)));
+
+                int numPow = convertBaseStringToNum(String.valueOf(res.charAt(i)));
                 sum = (int) (sum + (numPow * (Math.pow(base, i))));
             }
             ans = sum;
@@ -179,18 +183,22 @@ public class Ex1 {
         if (num < 0 || !checkIfValidBase(base)) {
             ans = "";
         } else {
-            for (int i = 0; i < testNum; i++) {
-                if ((int) (Math.pow(base, i)) <= testNum) {
-                    count++;
+            if(testNum != 0) {
+                for (int i = 0; i < testNum; i++) {
+                    if ((int) (Math.pow(base, i)) <= testNum) {
+                        count++;
+                    }
                 }
+                for (int i = 0; i < count; i++) {
+                    double pow = Math.pow(base, count - (i + 1));
+                    int numTimesCount = (int) (testNum / pow);
+                    testNum -= (int) (numTimesCount * pow);
+                    newNum += convertBaseIntToString(numTimesCount);
+                }
+            }else{
+                newNum += 0;
             }
-            for (int i = 0; i < count; i++) {
-                double pow = Math.pow(base, count - (i + 1));
-                int numTimesCount = (int) (testNum / pow);
-                testNum -= (int) (numTimesCount * pow);
-                newNum += convertBaseIntToString(numTimesCount);
-            }
-            if(base != 10) {
+            if (base != 10) {
                 String newBase = convertBaseIntToString(base);
                 newNum += 'b' + newBase;
             }
@@ -210,7 +218,7 @@ public class Ex1 {
         boolean ans = true;
         int valueN1 = number2Int(n1);
         int valueN2 = number2Int(n2);
-        if (valueN1 != valueN2) {
+        if (valueN1 != valueN2 || valueN1 == -1) {
             ans = false;
         }
         return ans;
@@ -225,16 +233,18 @@ public class Ex1 {
      * @return the index in the array in with the largest number (in value).
      */
     public static int maxIndex(String[] arr) {
-        int ans = 0;
+        int ans = -1;
         int max = 0;
-        int[] valueArr = new int[arr.length];
-        for (int i = 0; i < arr.length; i++) {
-            valueArr[i] = number2Int(arr[i]);
-        }
-        for (int i = 0; i < valueArr.length; i++) {
-            if (max < valueArr[i]) {
-                max = valueArr[i];
-                ans = i;
+        if (arr != null) {
+            int[] valueArr = new int[arr.length];
+            for (int i = 0; i < arr.length; i++) {
+                valueArr[i] = number2Int(arr[i]);
+            }
+            for (int i = 0; i < valueArr.length; i++) {
+                if (max < valueArr[i]) {
+                    max = valueArr[i];
+                    ans = i;
+                }
             }
         }
         return ans;

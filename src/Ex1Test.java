@@ -35,19 +35,24 @@ public class Ex1Test {
         }
     }
 
-    /**need to make and check*/
+    /**
+     * need to make and check
+     */
     @Test
     void int2NumberTest() {
-        String[] good = {"1", "1b2", "01b2", "123bA", "ABbG", "0bA"};
-        for (int i = 0; i < good.length; i = i + 1) {
-            boolean ok = Ex1.isNumber(good[i]);
-            assertTrue(ok);
-        }
-        String[] not_good = {"b2", "2b2", "1G3bG", " BbG", "0bbA", "abB", "!@b2", "A", "1bb2", "b", " ", "5b", "4b "};
-        for (int i = 0; i < not_good.length; i = i + 1) {
-            boolean not_ok = Ex1.isNumber(not_good[i]);
-            assertFalse(not_ok);
-        }
+        assertEquals("1000b2", Ex1.int2Number(8, 2));
+        assertEquals("54", Ex1.int2Number(54, 10));
+        assertEquals("2A0bG", Ex1.int2Number(672, 16));
+        assertEquals("3b5", Ex1.int2Number(3, 5));
+        assertEquals("1186b9", Ex1.int2Number(888, 9));
+        assertEquals("CbD", Ex1.int2Number(12, 13));
+        assertEquals("1012133b4", Ex1.int2Number(4511, 4));
+        assertEquals("0b5", Ex1.int2Number(0, 5));
+        assertEquals("98443", Ex1.int2Number(98443, 10));
+        assertEquals("", Ex1.int2Number(-8976, 7));
+        assertEquals("", Ex1.int2Number(3509, 23));
+        assertEquals("", Ex1.int2Number(1, 283));
+
     }
 
     @Test
@@ -65,6 +70,7 @@ public class Ex1Test {
         assertFalse(Ex1.equals("35627bG", "null"));
     }
 
+
     @Test
     void maxIndexTest() {
         String[] arr1 = {"123b6", "10101b2", "30bA"};
@@ -74,16 +80,16 @@ public class Ex1Test {
         assertEquals(1, Ex1.maxIndex(arr2));
 
         String[] arr3 = {"-4b5", "37b ", " b2"};
-        assertEquals(-1 ,Ex1.maxIndex(arr3));
+        assertEquals(-1, Ex1.maxIndex(arr3));
 
         String[] arr4 = {" ", "8bB", "1D3bG"};
-        assertEquals(2,Ex1.maxIndex(arr4));
+        assertEquals(2, Ex1.maxIndex(arr4));
 
         String[] arr5 = {};
-        assertEquals(-1,Ex1.maxIndex(arr5));
+        assertEquals(-1, Ex1.maxIndex(arr5));
 
         String[] arr6 = null;
-        assertEquals(-1,Ex1.maxIndex(arr6));
+        assertEquals(-1, Ex1.maxIndex(arr6));
     }
 
     @Test
@@ -136,6 +142,20 @@ public class Ex1Test {
             boolean not_ok = Ex1.checkIfValidBase(not_good[i]);
             assertFalse(not_ok);
         }
+    }
+
+    @Test
+    void isValidNumTest() {
+//        int[] good = {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16};
+//        for (int i = 0; i < good.length; i = i + 1) {
+//            boolean ok = Ex1.isValidNum(good[i]);
+//            assertTrue(ok);
+//        }
+//        int[] not_good = {0, 1, -1, 17, -567, 32, 54, 8890};
+//        for (int i = 0; i < not_good.length; i = i + 1) {
+//            boolean not_ok = Ex1.checkIfValidBase(not_good[i]);
+//            assertFalse(not_ok);
+//        }
     }
 
 }
