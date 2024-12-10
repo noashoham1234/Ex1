@@ -146,16 +146,19 @@ public class Ex1Test {
 
     @Test
     void isValidNumTest() {
-//        int[] good = {2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16};
-//        for (int i = 0; i < good.length; i = i + 1) {
-//            boolean ok = Ex1.isValidNum(good[i]);
-//            assertTrue(ok);
-//        }
-//        int[] not_good = {0, 1, -1, 17, -567, 32, 54, 8890};
-//        for (int i = 0; i < not_good.length; i = i + 1) {
-//            boolean not_ok = Ex1.checkIfValidBase(not_good[i]);
-//            assertFalse(not_ok);
-//        }
+        assertTrue(Ex1.isValidNum("11", 2));
+        assertTrue(Ex1.isValidNum("14", 10));
+        assertTrue(Ex1.isValidNum("D24E", 16));
+        assertTrue(Ex1.isValidNum("1100000", 5));
+        assertTrue(Ex1.isValidNum("29B20", 14));
+
+        assertFalse(Ex1.isValidNum("123bD", 4));
+        assertFalse(Ex1.isValidNum("567 ", 9));
+        assertFalse(Ex1.isValidNum(" ", 10));
+        assertFalse(Ex1.isValidNum("542bbbb6", 16));
+        assertFalse(Ex1.isValidNum("356t7bG", 3));
+        assertFalse(Ex1.isValidNum("3Y6tO0", 11));
+
     }
 
 }
