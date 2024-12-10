@@ -1,11 +1,11 @@
 # Ex1 - Foundations of Functional Programming & Testing
 
-## Overview
+### Overview
 
 In this assignment, I worked on using functional programming concepts to handle strings, arrays, and basic math. I built a program that converts numbers in different bases (like binary or hexadecimal) and performs calculations on them. The goal was to make sure everything works correctly, write clean code, and test it thoroughly.
 ---
 
-## Problem Description
+### Problem Description
 
 I built a number converter and calculator that handles strings representing numbers in different bases (from binary to hexadecimal). The format is `<number><b><base>`, where:
 - `<number>` is a string of digits.
