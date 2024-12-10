@@ -121,7 +121,7 @@ public class Ex1 {
                 }
             }
         }
-        if (count == num.length() && num.length() != 0) {
+        if (count == num.length() && !num.isEmpty()) {
             ans = true;
         }
         return ans;
