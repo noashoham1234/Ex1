@@ -21,6 +21,26 @@ public class Ex1Test {
     }
 
     @Test
+    void convertBaseStringToNum() {
+        // implement this test
+    }
+
+    @Test
+    void convertBaseIntToString() {
+        // implement this test
+    }
+
+    @Test
+    void checkIfValidBase() {
+        // implement this test
+    }
+
+    @Test
+    void isValidNum() {
+        // implement this test
+    }
+
+    @Test
     void isBasisNumberTest() {
         String[] good = {"1", "1b2", "01b2", "123bA", "ABbG", "0bA"};
         for(int i=0;i<good.length;i=i+1) {
@@ -37,10 +57,10 @@ public class Ex1Test {
     void int2NumberTest() {
         // implement this test
     }
+
     @Test
     void maxIndexTest() {
         // implement this test
     }
 
-    // Add additional test functions - test as much as you can.
 }

@@ -13,6 +13,7 @@
  */
 public class Ex1 {
 
+    /** */
     public static int convertBaseStringToNum(String b){
         int ans = switch (b) {
             case "A" -> 10;
@@ -27,6 +28,22 @@ public class Ex1 {
         return ans;
     }
 
+    /** */
+    public static String convertBaseIntToString(int b){
+        String ans = switch (b) {
+            case 10 -> "A";
+            case 11 -> "B";
+            case 12 -> "C";
+            case 13 -> "D";
+            case 14 -> "E";
+            case 15 -> "F";
+            case 16 -> "G";
+            default -> String.valueOf(b);
+        };
+        return ans;
+    }
+
+    /** */
     public static boolean checkIfValidBase(int base){
         int[] basisim = {2,3,4,5,6,7,8,9,10,11,12,13,14,15,16};
         boolean ans = false;
@@ -67,6 +84,7 @@ public class Ex1 {
         return ans;
     }
 
+    /** */
     public static boolean isValidNum (String num, int base){
         boolean ans = false;
         int count = 0;
@@ -111,31 +129,6 @@ public class Ex1 {
     }
 
 
-
-
-    //
-    public static char reVal(int num)
-    {
-        if (num >= 0 && num <= 9)
-            return(char)(num + '0');
-        else
-            return(char)(num - 10 + 'A');
-    }
-
-    //funtion that reverses a string
-    static String reverse(String input)
-    {
-        char[] a = input.toCharArray();
-        int l, r = a.length - 1;
-        for(l = 0; l < r; l++, r--)
-        {
-            char temp = a[l];
-            a[l] = a[r];
-            a[r] = temp;
-        }
-        return String.valueOf(a);
-    }
-
     /**
      * Calculate the number representation (in basis base)
      * of the given natural number (represented as an integer).
@@ -145,30 +138,28 @@ public class Ex1 {
      * @return a String representing a number (in base) equals to num, or an empty String (in case of wrong input).
      */
     public static String int2Number(int num, int base) {
-        String ans = "";
-
-//        int testNum = num;
-//        String newNum = "";
-//        String numbers = "0123456789ABCDEF";
-
-//        boolean isCorrectBase = checkIfValidBase(base);
-//        if(num > 0 && isCorrectBase ) {
-//
-//                String res = "";
-//
-//                // Repeatedly divide testNum
-//                // by base and take remainder
-//                while (testNum > 0)
-//                {
-//                    // Update res
-//                    res += reVal(testNum % base);
-//                    // Update inputNum
-//                    testNum /= base;
-//                }
-//                // Reverse the result
-//                res = reverse(res);
-//                ans = res + "b" + base;
-//        }
+        String ans;
+        String newNum = "";
+        int testNum = num;
+        int count = 0;
+        if(num < 0 || !checkIfValidBase(base)) {
+            ans = "";
+        }else {
+            for(int i = 0; i < testNum; i++) {
+                if((int) (Math.pow(base,i)) <= testNum){
+                    count++;
+                }
+            }
+            for(int i = 0; i < count ; i++) {
+                double pow = Math.pow(base, count - (i+1));
+                int numTimesCount = (int) (testNum/ pow);
+                testNum -= (int) (numTimesCount * pow);
+                newNum += convertBaseIntToString(numTimesCount);
+            }
+            String newBase = convertBaseIntToString(base);
+            newNum += 'b' + newBase;
+            ans = newNum;
+        }
         return ans;
     }
 
