@@ -65,7 +65,7 @@ public class Ex1 {
         boolean ans = false;
 
         if (base > 0) {
-            for (int i = 0; i < basisim.length; i++) {
+            for (int i = 0; i < basisim.length; i++) { // go over all the basisim and check if the base that is given is there
                 if (base == basisim[i]) {
                     ans = true;
                     break;
@@ -85,7 +85,7 @@ public class Ex1 {
     public static int number2Int(String num) {
         int ans = -1;
         if (isNumber(num)) {
-            if (!num.contains("b")) {
+            if (!num.contains("b")) { //if there isn't aa b the number is in base 10 (= A)
                 num += "bA";
             }
             String[] arr = num.split("b");
@@ -99,9 +99,8 @@ public class Ex1 {
             int sum = 0;
 
             for (int i = 0; i < res.length(); i++) {
-
-                int numPow = convertBaseStringToNum(String.valueOf(res.charAt(i)));
-                sum = (int) (sum + (numPow * (Math.pow(base, i))));
+                int numPow = convertBaseStringToNum(String.valueOf(res.charAt(i))); //number in i so that we know how many times we have to multiply the weight (= Math.pow(base, i))
+                sum = (int) (sum + (numPow * (Math.pow(base, i)))); //add to sum the current value of the weight * number of times it is shown
             }
             ans = sum;
         }
@@ -118,14 +117,14 @@ public class Ex1 {
         int count = 0;
         String numbers = "0123456789ABCDEF";
         for (int i = 0; i < num.length(); i++) {
-            int digit = convertBaseStringToNum(String.valueOf(num.charAt(i)));
+            int digit = convertBaseStringToNum(String.valueOf(num.charAt(i))); // converts digit to number if it's a letter so that we can check if it's smaller than the base
             if (digit != -1 && digit < base) {
-                if (numbers.contains(num.charAt(i) + "")) {
+                if (numbers.contains(num.charAt(i) + "")) { // checks if it a a valid digit (from the numbers String)
                     count++;
                 }
             }
         }
-        if (count == num.length() && !num.isEmpty()) {
+        if (count == num.length() && !num.isEmpty()) { // if the length of the given number equals the count that means all the digits are correct and the number is valid
             ans = true;
         }
         return ans;
@@ -144,7 +143,7 @@ public class Ex1 {
             ans = false;
         } else {
 
-            if (!a.contains("b")) {
+            if (!a.contains("b")) {// if there isn't aa b the number is in base 10 (= A)
                 a += "bA";
             }
 
@@ -157,7 +156,7 @@ public class Ex1 {
 
                 boolean numIsValid = isValidNum(arr[0], base);
 
-                if (!numIsValid || !baseIsValid) {
+                if (!numIsValid || !baseIsValid) { //if the base or tha number aren't valid the return false
                     ans = false;
                 }
             }
@@ -177,7 +176,7 @@ public class Ex1 {
      */
     public static String int2Number(int num, int base) {
         String ans;
-        StringBuilder newNum = new StringBuilder();
+        String newNum = "";
         int testNum = num;
         int count = 0;
         if (num < 0 || !checkIfValidBase(base)) {
@@ -190,19 +189,19 @@ public class Ex1 {
                     }
                 }
                 for (int i = 0; i < count; i++) {
-                    double pow = Math.pow(base, count - (i + 1));
-                    int numTimesCount = (int) (testNum / pow);
-                    testNum -= (int) (numTimesCount * pow);
-                    newNum.append(convertBaseIntToString(numTimesCount));
+                    double pow = Math.pow(base, count - (i + 1)); // goes over the number and gits the weight of the index
+                    int numTimesCount = (int) (testNum / pow); // divides the number by the weight to know how what digit is in that place of the weight
+                    testNum -= (int) (numTimesCount * pow); // subtracts the weight times the number from the original number
+                    newNum += convertBaseIntToString(numTimesCount); // ands the weight times the number to the new number
                 }
             }else{
-                newNum.append(0);
+                newNum += 0;
             }
             if (base != 10) {
-                String newBase = convertBaseIntToString(base);
-                newNum.append('b').append(newBase);
+                String newBase = convertBaseIntToString(base); // convert the base to a letter if is begger than 9
+                newNum += 'b' + newBase; //add the "b" and the base
             }
-            ans = newNum.toString();
+            ans = newNum;
         }
         return ans;
     }
@@ -236,13 +235,9 @@ public class Ex1 {
         int ans = -1;
         int max = 0;
         if (arr != null) {
-            int[] valueArr = new int[arr.length];
-            for (int i = 0; i < arr.length; i++) {
-                valueArr[i] = number2Int(arr[i]);
-            }
-            for (int i = 0; i < valueArr.length; i++) {
-                if (max < valueArr[i]) {
-                    max = valueArr[i];
+            for (int i = 0; i < arr.length; i++) { // goes over the array and check in what index is the max number
+                if (max < number2Int(arr[i])) {
+                    max = number2Int(arr[i]);
                     ans = i;
                 }
             }
