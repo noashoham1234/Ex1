@@ -119,7 +119,7 @@ public class Ex1 {
         for (int i = 0; i < num.length(); i++) {
             int digit = convertBaseStringToNum(String.valueOf(num.charAt(i))); // converts digit to number if it's a letter so that we can check if it's smaller than the base
             if (digit != -1 && digit < base) {
-                if (numbers.contains(num.charAt(i) + "")) { // checks if it a a valid digit (from the numbers String)
+                if (numbers.contains(num.charAt(i) + "")) { // checks if it a valid digit (from the numbers String)
                     count++;
                 }
             }
