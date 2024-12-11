@@ -52,8 +52,6 @@ public class Ex1Main {
             String maxNum = arr[maxIndex];
             if (!Ex1.checkIfValidBase(base)) {
                 System.out.println("ERR: wrong base, should be [2,16], got (" + base + ")");
-                continue;
-
             } else {
                 System.out.println(num1 + " + " + num2 + " = " + valueSumPlus);
                 System.out.println(num1 + " * " + num2 + " = " + valueSumMulti);
