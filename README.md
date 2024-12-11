@@ -2,7 +2,9 @@
 
 ### Overview
 
-In this assignment, I worked on using functional programming concepts to handle strings, arrays, and basic math. I built a program that converts numbers in different bases (like binary or hexadecimal) and performs calculations on them. The goal was to make sure everything works correctly, write clean code, and test it thoroughly.
+This code is an answer to the Ex1 assignment. It works by using functional programming concepts to handle strings, arrays, and basic math. 
+I built a program that acts as a calculator of some sort, converting numbers from one base (like binary or hexadecimal) to another. 
+Additionally, there are tests in the program to ensure everything works correctly.
 ---
 
 ### Problem Description
@@ -43,9 +45,3 @@ I built a number converter and calculator that handles strings representing numb
    1001b2 * 11b3 = 36
    Max number over [1001b2, 11b3, 13, 36] is: 36
    ```
-
-### Error Handling:
-For invalid inputs, the program displays an error message such as:
-```
-ERR: num1 is in the wrong format! (1b)
-```
